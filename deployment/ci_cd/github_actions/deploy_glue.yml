@@ -1,0 +1,33 @@
+name: Deploy Glue Job
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'etl_processing/glue/**'
+      - 'deployment/ci_cd/github_actions/deploy_glue.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Package Glue job script
+      run: |
+        aws s3 cp etl_processing/glue/glue_job.py s3://your-bucket/scripts/glue_job.py
+
+    - name: Deploy Glue job
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-west-2'
+      run: |
+        aws glue update-job --job-name etl-glue-job --job-update '{
+          "Command": {
+            "ScriptLocation": "s3://your-bucket/scripts/glue_job.py"
+          }
+        }'

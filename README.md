@@ -458,3 +458,65 @@ Certainly! Here’s a low-level design (LLD) for the system that fetches data fr
 This LLD provides a detailed view of the components, their configurations, and how they interact to create a robust and scalable system for ingesting, processing, and analyzing product data from e-commerce websites using AWS services, Kafka, Snowflake, and Python.
 
 
+### Project Structure
+
+```
+ecommerce-data-ingestion/
+├── README.md
+├── requirements.txt
+├── web_scraping/
+│   ├── __init__.py
+│   ├── amazon_scraper.py
+│   ├── flipkart_scraper.py
+│   ├── scheduler/
+│   │   ├── __init__.py
+│   │   ├── lambda_handler.py
+│   │   └── cloudwatch_event.json
+├── data_ingestion/
+│   ├── __init__.py
+│   ├── kafka_producer.py
+│   ├── kafka_consumer.py
+│   ├── kafka_config.py
+│   └── kafka_setup.sh
+├── etl_processing/
+│   ├── __init__.py
+│   ├── lambda/
+│   │   ├── __init__.py
+│   │   ├── lambda_handler.py
+│   │   └── lambda_deployment_package/
+│   │       ├── requirements.txt
+│   │       ├── deploy.sh
+│   ├── glue/
+│   │   ├── __init__.py
+│   │   ├── glue_job.py
+│   │   └── glue_config.json
+├── data_warehouse/
+│   ├── snowflake_schema.sql
+│   ├── snowflake_config.py
+│   └── snowflake_loader.py
+├── analytics/
+│   ├── notebooks/
+│   │   ├── product_analysis.ipynb
+│   ├── bi_tools/
+│   │   └── tableau_dashboard.twb
+├── monitoring/
+│   ├── cloudwatch/
+│   │   ├── cloudwatch_alarms.json
+│   ├── kafka/
+│   │   └── kafka_monitoring.sh
+│   ├── snowflake/
+│   │   └── snowflake_monitoring.sql
+└── deployment/
+    ├── infrastructure/
+    │   ├── terraform/
+    │   │   ├── main.tf
+    │   │   ├── variables.tf
+    │   │   └── outputs.tf
+    ├── ci_cd/
+        ├── github_actions/
+        │   ├── deploy_lambda.yml
+        │   ├── deploy_glue.yml
+        │   └── deploy_infrastructure.yml
+
+```
+

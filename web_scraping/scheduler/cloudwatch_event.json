@@ -1,0 +1,14 @@
+{
+  "source": "aws.events",
+  "detail-type": "Scheduled Event",
+  "detail": {},
+  "resources": [
+    "arn:aws:events:us-east-1:123456789012:rule/ScrapingScheduleRule"
+  ],
+  "region": "us-east-1",
+  "account": "123456789012",
+  "time": "2021-07-14T01:23:45Z",
+  "id": "abcd1234-5678-90ab-cdef-1234567890ab",
+  "version": "0",
+  "detail-type": "Scheduled Event"
+}

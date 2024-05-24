@@ -1,0 +1,18 @@
+{
+  "Name": "etl-glue-job",
+  "Role": "YOUR_AWS_GLUE_SERVICE_ROLE",
+  "ExecutionProperty": {
+    "MaxConcurrentRuns": 1
+  },
+  "Command": {
+    "Name": "glueetl",
+    "ScriptLocation": "s3://your-bucket/scripts/glue_job.py",
+    "PythonVersion": "3"
+  },
+  "DefaultArguments": {
+    "--job-bookmark-option": "job-bookmark-disable"
+  },
+  "MaxRetries": 0,
+  "AllocatedCapacity": 2,
+  "Timeout": 2880
+}
